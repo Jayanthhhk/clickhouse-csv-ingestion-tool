@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClickHouse Ingestion Tool</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>ClickHouse ↔ Flat File Ingestion</h1>
+
+    <!-- Ingestion Direction -->
+    <div class="form-group">
+      <label for="direction">Ingestion Direction:</label>
+      <select id="direction">
+        <option value="clickhouse_to_csv">ClickHouse → Flat File</option>
+        <option value="csv_to_clickhouse">Flat File → ClickHouse</option>
+      </select>
+    </div>
+
+    <!-- ClickHouse Config -->
+    <div class="form-group">
+      <h3>ClickHouse Configuration</h3>
+      <input type="text" id="host" placeholder="Host (e.g., localhost)" />
+      <input type="text" id="port" placeholder="Port (e.g., 8123)" />
+      <input type="text" id="user" placeholder="User" />
+      <input type="text" id="jwt" placeholder="JWT Token (used as password)" />
+      <button onclick="connectClickHouse()">Connect to ClickHouse</button>
+    </div>
+
+    <div id="ch-status" class="status"></div>
+
+    <!-- Browse Tables & Columns -->
+    <div class="form-group">
+      <h3>Browse Tables</h3>
+      <input type="text" id="database" placeholder="Database (default)" />
+      <button onclick="listTables()">List Tables</button>
+      <select id="tableList" onchange="loadColumns()"></select>
+      <div id="columnsContainer"></div>
+    </div>
+
+    <!-- File Upload for CSV -> ClickHouse -->
+    <div class="form-group" id="file-upload-group">
+      <h3>Flat File (CSV) Upload</h3>
+      <input type="text" id="clickhouse_table_name" placeholder="ClickHouse table name" />
+      <input type="file" id="csvFile" accept=".csv" />
+    </div>
+  
+    <div class="form-group">
+      <h3>Multi-table JOIN (Advanced)</h3>
+    
+      <!-- Select Tables -->
+      <label>First Table:</label>
+      <select id="join_table1" onchange="loadJoinColumns(1)"></select>
+    
+      <label>Second Table:</label>
+      <select id="join_table2" onchange="loadJoinColumns(2)"></select>
+    
+      <!-- Select Join Columns -->
+      <label>Join Column (from First Table):</label>
+      <select id="join_column1"></select>
+    
+      <label>Join Column (from Second Table):</label>
+      <select id="join_column2"></select>
+    
+      <!-- Optional: Select Columns -->
+      <label>Columns to Select (optional):</label>
+      <input type="text" id="join_columns" placeholder="e.g., t1.user_id, t2.amount" />
+    
+      <!-- Join Type -->
+      <label>Join Type:</label>
+      <select id="join_type">
+        <option value="INNER">INNER JOIN</option>
+        <option value="LEFT">LEFT JOIN</option>
+        <option value="RIGHT">RIGHT JOIN</option>
+        <option value="FULL">FULL JOIN</option>
+      </select>
+    
+      <button onclick="performJoin()">Run JOIN and Export</button>
+    </div>
+    
+
+    <!-- Action Buttons -->
+    <div class="form-group">
+      <button onclick="startIngestion()">Start Ingestion</button>
+      <button onclick="uploadCSV()">Upload CSV to ClickHouse</button>
+    </div>
+
+    <!-- Output -->
+    <div id="result" class="result"></div>
+    <div id="status" class="status"></div>
+
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

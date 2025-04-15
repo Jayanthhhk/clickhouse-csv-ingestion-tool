@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+uploads/
+clickhouse_output.csv
+clickhouse_join_output.csv
+*.zip
