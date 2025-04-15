@@ -1,0 +1,67 @@
+# prompts.txt
+# Zeotap Software Engineer Intern Assignment – Jayanth H K
+# Record of AI-assisted development with ChatGPT
+
+---
+
+[✅ Setup Help]
+• "Help me start the assignment from scratch using Python."
+• "What to install, where to put files, how to run Flask?"
+• "How to start ClickHouse in Docker on Windows?"
+
+---
+
+[✅ Ingestion Logic & API]
+• "Help me create the /connect_clickhouse endpoint."
+• "How do I export ClickHouse table data to CSV using Flask?"
+• "How to upload a CSV and insert it into ClickHouse with schema detection?"
+
+---
+
+[✅ UI / Frontend]
+• "Give me full index.html layout for ClickHouse and CSV UI."
+• "Add dropdowns for ingestion direction, inputs for config, and file upload."
+• "Make column selection checkboxes from schema."
+• "How to show JOIN dropdowns for tables and join columns?"
+
+---
+
+[✅ Multi-table JOIN Feature (Bonus)]
+• "Implement multi-table JOIN with UI, column selection, and join type."
+• "Write the backend to handle JOIN queries and export to CSV."
+• "Make JOIN UI dynamic with dropdowns using loadJoinTables() and loadJoinColumns()."
+
+---
+
+[✅ Testing & Debugging]
+• "How to test the web UI?"
+• "What values to fill in ClickHouse config and JOIN fields?"
+• "Help me fix JOIN error: unknown column..."
+• "Where are the exported CSVs saved?"
+
+---
+
+[✅ Final Submission & Packaging]
+• "Generate README.md"
+• "What to include in my GitHub repo?"
+• "How to zip the folder for submission?"
+• "Push my code to GitHub and fix remote URL issues."
+• "Polish the final README with screenshot and feature summary."
+• "Generate prompts.txt"
+
+---
+
+[✅ ChatGPT Involvement]
+ChatGPT was used to:
+• Plan and structure the full project
+• Write Flask backend endpoints
+• Generate frontend HTML/JS code
+• Troubleshoot Docker + ClickHouse issues
+• Polish README and prompts.txt
+• Final QA testing guidance and submission packaging
+
+---
+
+This file documents how AI assistance was used to accelerate development, ensure correctness, and polish the final delivery.
+
+
